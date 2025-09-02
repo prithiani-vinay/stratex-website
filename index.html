@@ -6,8 +6,8 @@
   <title>Stratex Technologies LLP — Strategy × Execution</title>
   <meta name="description" content="Stratex is a Mumbai-based technology consulting firm specializing in Salesforce implementations and AI-led digital transformation for Indian SMBs and enterprises." />
   <meta name="theme-color" content="#0b0f1a" />
-  <!-- Font: Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <!-- Fonts: Inter for header + Roboto for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --radius: 16px; --container: 1100px; --shadow: 0 18px 50px rgba(2,6,23,.35);
@@ -25,14 +25,43 @@
     .icon { width: 18px; height: 18px; margin-right: 8px; vertical-align: -3px; fill: currentColor; opacity: .95; }
     .icon-lg { width: 22px; height: 22px; vertical-align: -4px; }
 
-    /* Header */
-    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(12px); background: rgba(7,12,26,.85); border-bottom: 1px solid var(--line); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
-    .logo-img { width: 32px; height: 32px; border-radius: 8px; display:inline-block; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { display: inline-block; padding: 8px 2px; font-weight: 600; border-bottom: 2px solid transparent; }
-    .nav-links a:hover, .nav-links a:focus { border-bottom-color: var(--accent); }
+    /* Header - IMPROVED */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(12px); background: rgba(7,12,26,.90); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 16px; 
+      font-family: 'Inter', system-ui, -apple-system; 
+      font-weight: 700; 
+      font-size: 20px;
+      letter-spacing: -0.02em; 
+    }
+    .logo-img { 
+      width: 48px; 
+      height: 48px; 
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 8px rgba(34,211,238,.3));
+    }
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 32px; 
+      font-family: 'Inter', system-ui, -apple-system;
+    }
+    .nav-links a { 
+      display: inline-block; 
+      padding: 10px 4px; 
+      font-weight: 500; 
+      font-size: 15px;
+      border-bottom: 2px solid transparent; 
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus { 
+      border-bottom-color: var(--accent); 
+      color: var(--accent);
+    }
 
     /* Hero */
     .hero { padding: 84px 0 48px; text-align: center; }
@@ -81,6 +110,8 @@
     @media (max-width: 880px){
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .nav-links { gap: 18px; }
+      .brand { font-size: 18px; }
+      .logo-img { width: 40px; height: 40px; }
     }
   </style>
 </head>
