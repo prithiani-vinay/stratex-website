@@ -1,329 +1,1002 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight-fixed">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stratex Technologies LLP — Strategy × Execution</title>
-  <meta name="description" content="Stratex is a Mumbai-based technology consulting firm specializing in Salesforce implementations and AI-led digital transformation for Indian SMBs and enterprises." />
-  <meta name="theme-color" content="#0b0f1a" />
-  <!-- Fonts: Inter for header + Roboto for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --radius: 16px; --container: 1100px; --shadow: 0 18px 50px rgba(2,6,23,.35);
-      --bg: #070c1a; --panel: #0b1225; --line: rgba(99,102,241,.25);
-      --text: #e6ebfa; --muted: #9fb0cf; --accent: #22d3ee; --accent-2: #7c3aed;
-      --font: 'Roboto', system-ui, -apple-system, Segoe UI, "Helvetica Neue", Arial;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: var(--font); color: var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.20), transparent 60%), radial-gradient(900px 500px at 110% 10%, rgba(34,211,238,.14), transparent 60%), linear-gradient(180deg, var(--bg), var(--bg)); }
-    a { color: inherit; text-decoration: none; }
-    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Stratex is a Mumbai-based technology consulting firm specializing in Salesforce implementations and AI-led digital transformation. Global delivery, India expertise.">
+<meta name="theme-color" content="#0C1A35">
+<title>Stratex Technologies LLP — Strategy × Execution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #0C1A35;
+  --navy-mid:    #1E3358;
+  --terra:       #B85C38;
+  --terra-light: #D4895A;
+  --sand:        #F4F1EC;
+  --slate:       #6B7280;
+  --white:       #FFFFFF;
+  --body-font:   'Inter', Helvetica, Arial, sans-serif;
+  --display-font: Futura, 'Century Gothic', 'Trebuchet MS', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body-font);
+  color: var(--navy);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
 
-    /* Icons */
-    .icon { width: 18px; height: 18px; margin-right: 8px; vertical-align: -3px; fill: currentColor; opacity: .95; }
-    .icon-lg { width: 22px; height: 22px; vertical-align: -4px; }
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(12, 26, 53, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--terra-light); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 9px 22px;
+  border: 1.5px solid var(--terra);
+  color: var(--terra-light);
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-cta:hover { background: var(--terra); color: var(--white); }
 
-    /* Header - IMPROVED */
-    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(12px); background: rgba(7,12,26,.90); border-bottom: 1px solid var(--line); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-    .brand { 
-      display: flex; 
-      align-items: center; 
-      gap: 16px; 
-      font-family: 'Inter', system-ui, -apple-system; 
-      font-weight: 700; 
-      font-size: 20px;
-      letter-spacing: -0.02em; 
-    }
-    .logo-img { 
-      width: 48px; 
-      height: 48px; 
-      object-fit: contain;
-      flex-shrink: 0;
-      filter: drop-shadow(0 2px 8px rgba(34,211,238,.3));
-    }
-    .nav-links { 
-      display: flex; 
-      align-items: center; 
-      gap: 32px; 
-      font-family: 'Inter', system-ui, -apple-system;
-    }
-    .nav-links a { 
-      display: inline-block; 
-      padding: 10px 4px; 
-      font-weight: 500; 
-      font-size: 15px;
-      border-bottom: 2px solid transparent; 
-      transition: all 0.2s ease;
-    }
-    .nav-links a:hover, .nav-links a:focus { 
-      border-bottom-color: var(--accent); 
-      color: var(--accent);
-    }
+/* ── Hero ── */
+#home {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-peak {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.04;
+  pointer-events: none;
+}
+.hero-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terra-light);
+  margin-bottom: 36px;
+}
+.hero-wordmark { margin-bottom: 36px; }
+.hero-headline {
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.18;
+  max-width: 740px;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero-headline em { font-style: normal; color: var(--terra-light); }
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--terra);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.15s;
+  border: none;
+  cursor: pointer;
+  font-family: var(--body-font);
+}
+.btn-primary:hover { background: #a04e2e; transform: translateY(-1px); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 28px;
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+.hero-badges {
+  display: flex;
+  gap: 28px;
+  margin-top: 64px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--terra);
+  flex-shrink: 0;
+}
 
-    /* Hero */
-    .hero { padding: 84px 0 48px; text-align: center; }
-    .eyebrow { color: var(--accent); font-weight: 800; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; }
-    .title { margin: 10px 0 14px; font-size: clamp(28px, 5vw, 44px); font-weight: 900; line-height: 1.08; }
-    .subtitle { color: var(--muted); font-size: clamp(14px, 2.4vw, 18px); max-width: 820px; margin: 0 auto; }
-    .hero-card { margin-top: 26px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); display: inline-flex; gap: 14px; align-items: center; }
-    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: rgba(34,211,238,.12); color: #eafffe; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+/* ── Pedigree bar ── */
+#pedigree {
+  background: var(--white);
+  border-bottom: 1px solid rgba(12,26,53,0.08);
+  padding: 40px 48px;
+}
+.pedigree-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.pedigree-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pedigree-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(12,26,53,0.12);
+  flex-shrink: 0;
+}
+.pedigree-logos {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.pedigree-logo {
+  display: block;
+  filter: opacity(0.45);
+  transition: filter 0.2s;
+}
+.pedigree-logo:hover { filter: opacity(0.8); }
+.pedigree-logo-tata       { height: 60px; width: auto; }
+.pedigree-logo-deloitte   { height: 60px; width: auto; }
+.pedigree-logo-bcg        { height: 44px; width: auto; }
+.pedigree-logo-salesforce { height: 60px; width: auto; }
 
-    /* Sections */
-    section { padding: 56px 0; }
-    .section-title { font-size: clamp(22px, 3.5vw, 30px); margin: 0 0 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-    .section-sub { color: var(--muted); margin: 0 0 20px; }
+/* ── Section scaffolding ── */
+.section { padding: 96px 24px; }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+.section-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-kicker::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--terra);
+  flex-shrink: 0;
+}
+.section-kicker--light { color: var(--terra-light); }
+.section-kicker--light::before { background: var(--terra-light); }
+.section-title {
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-lead {
+  font-size: 16px;
+  color: var(--slate);
+  max-width: 540px;
+  line-height: 1.75;
+}
 
-    /* Cards */
-    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+/* ── Peak divider ── */
+.peak-divider {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  opacity: 0.25;
+}
 
-    /* Layouts */
-    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    .contact-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 22px; }
+/* ── About ── */
+#about { background: var(--sand); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 48px;
+}
+.about-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.sector-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(12,26,53,0.18);
+  border-radius: 2px;
+  color: var(--navy-mid);
+}
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 8px;
+}
+.how-step { display: flex; gap: 20px; align-items: flex-start; }
+.step-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--terra);
+  padding-top: 3px;
+  flex-shrink: 0;
+  width: 24px;
+}
+.step-content h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.step-content p { font-size: 14px; color: var(--slate); line-height: 1.65; }
 
-    /* Lists */
-    .list { list-style: none; padding: 0; margin: 8px 0 0; }
-    .list li { position: relative; padding: 10px 0 10px 26px; border-bottom: 1px solid var(--line); }
-    .list li:last-child { border-bottom: none; }
-    .list li::before { content: ""; position: absolute; left: 8px; top: 14px; width: 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, var(--accent-2), var(--accent)); box-shadow: 0 0 0 3px rgba(96,165,250,.12); }
+/* ── Why Stratex (global) ── */
+#why {
+  background: var(--navy);
+  padding: 96px 24px;
+}
+#why .section-title { color: var(--white); }
+#why .section-kicker { color: var(--terra-light); }
+#why .section-kicker::before { background: var(--terra-light); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+.why-card {
+  background: var(--navy);
+  padding: 36px 32px;
+  transition: background 0.2s;
+}
+.why-card:hover { background: var(--navy-mid); }
+.why-card-icon { margin-bottom: 18px; }
+.why-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.why-card p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
 
-    /* Forms */
-    form { display: grid; gap: 10px; margin-top: 12px; }
-    input, textarea, select { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: #0b1225; color: var(--text); outline: none; font-family: var(--font); }
-    textarea { min-height: 130px; resize: vertical; }
-    input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 4px rgba(96,165,250,.35); border-color: #60a5fa; }
-    .btn { align-self: start; background: linear-gradient(135deg, var(--accent-2), var(--accent)); color: #001022; padding: 12px 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); font-family: var(--font); display: inline-flex; align-items: center; gap: 8px; }
+/* ── Engagement models ── */
+#engagement { background: var(--white); }
+.engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.engagement-card {
+  border: 1.5px solid rgba(12,26,53,0.1);
+  border-radius: 8px;
+  padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.engagement-card:hover {
+  border-color: var(--terra);
+  box-shadow: 0 4px 24px rgba(184,92,56,0.08);
+}
+.engagement-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.engagement-card p { font-size: 13px; color: var(--slate); line-height: 1.65; }
+.engagement-tag {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--terra);
+  padding: 3px 8px;
+  background: rgba(184,92,56,0.08);
+  border-radius: 2px;
+}
 
-    /* Contact */
-    .address { color: var(--muted); line-height: 1.6; }
-    .contact-block { display: grid; gap: 10px; }
-    .contact-block a { color: #cfe3ff; }
-    .contact-block a:hover { text-decoration: underline; }
+/* ── Services ── */
+#services { background: var(--sand); }
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: rgba(12,26,53,0.08);
+  border: 1px solid rgba(12,26,53,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.service-card {
+  background: var(--white);
+  padding: 40px;
+  transition: background 0.2s;
+}
+.service-card:hover { background: #faf8f4; }
+.service-icon { margin-bottom: 20px; }
+.service-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.service-card p { font-size: 14px; color: var(--slate); line-height: 1.7; margin-bottom: 20px; }
+.service-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.service-list li {
+  font-size: 13px;
+  color: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.service-list li::before { content: '→'; color: var(--terra); font-size: 12px; flex-shrink: 0; }
 
-    /* Footer */
-    footer { border-top: 1px solid var(--line); background: #0a0f1f; padding: 26px 0; color: #c7d2fe; }
-    .foot { display: grid; gap: 8px; text-align: center; font-size: 14px; }
+/* ── Contact ── */
+#contact { background: var(--navy); }
+#contact .section-title { color: var(--white); }
+#contact .section-lead { color: rgba(255,255,255,0.55); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 72px;
+  margin-top: 56px;
+  align-items: start;
+}
+.contact-info-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra-light);
+  margin-bottom: 8px;
+}
+.contact-info-value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.contact-info-value a { transition: color 0.2s; }
+.contact-info-value a:hover { color: var(--terra-light); }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--white);
+  font-family: var(--body-font);
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.form-group select option { background: var(--navy); color: var(--white); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--terra); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit { margin-top: 8px; align-self: flex-start; }
 
-    @media (max-width: 880px){
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .brand { font-size: 18px; gap: 10px; margin-left: 4px; }
-      .logo-img { width: 36px; height: 36px; }
-      .container { padding: 0 20px; }
-      .nav { padding: 16px 0; }
-      .hero { padding: 100px 0 40px; }
-      .title { font-size: clamp(24px, 7vw, 36px); line-height: 1.15; }
-      .subtitle { font-size: 16px; padding: 0 10px; }
-      .hero-card { flex-direction: column; gap: 12px; padding: 16px; }
-      .pill { font-size: 11px; padding: 8px 12px; }
-      section { padding: 40px 0; }
-      .services { grid-template-columns: 1fr; gap: 12px; }
-      .card { padding: 16px; }
-      .section-title { font-size: clamp(20px, 6vw, 28px); }
-      .section-sub { font-size: 14px; margin-bottom: 16px; }
-      .list li { padding: 8px 0 8px 20px; font-size: 14px; }
-      .contact-grid { gap: 16px; }
-      form { gap: 12px; }
-      input, textarea, select { padding: 14px 16px; font-size: 16px; }
-      .btn { padding: 14px 20px; width: 100%; justify-content: center; }
-      .about-grid { gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-      .foot { font-size: 13px; }
-    }fr; gap: 12px; }
-      .card { padding: 16px; }
-      .section-title { font-size: clamp(20px, 6vw, 28px); }
-      .section-sub { font-size: 14px; margin-bottom: 16px; }
-      .list li { padding: 8px 0 8px 20px; font-size: 14px; }
-      .contact-grid { gap: 16px; }
-      form { gap: 12px; }
-      input, textarea, select { padding: 14px 16px; font-size: 16px; }
-      .btn { padding: 14px 20px; width: 100%; justify-content: center; }
-      .container { padding: 0 16px; }
-      .nav { padding: 16px 0; }
-      .about-grid { gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-      .foot { font-size: 13px; }
-    }
-  </style>
+/* ── Footer ── */
+footer {
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.footer-social {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-social:hover { color: var(--terra-light); }
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .engagement-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .engagement-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .section { padding: 64px 20px; }
+  #pedigree { padding: 28px 20px; }
+  .pedigree-divider { display: none; }
+  .pedigree-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .pedigree-logos { gap: 28px 40px; flex-wrap: wrap; }
+  .pedigree-logo-tata { height: 48px; width: auto; } .pedigree-logo-deloitte { height: 48px; width: auto; } .pedigree-logo-bcg { height: 36px; width: auto; } .pedigree-logo-salesforce { height: 48px; width: auto; }
+  footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .engagement-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
 </head>
 <body>
-  <!-- SVG Icon Sprite (inline, no external deps) -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-    <symbol id="i-shield" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l7 3v6c0 5-3.4 9.7-7 11-3.6-1.3-7-6-7-11V5l7-3z"/></symbol>
-    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4zm7 10l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM5 13l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"/></symbol>
-    <symbol id="i-map" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z"/></symbol>
-    <symbol id="i-rocket" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3l7 7-4 1-4 4-1 4-7-7 4-1 4-4 1-4zM6 18l-2 4 4-2 1-3-3 1z"/></symbol>
-    <symbol id="i-wrench" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7a6 6 0 01-8 5.65L7.6 19.05a2 2 0 11-2.83-2.83l6.4-6.4A6 6 0 1122 7z"/></symbol>
-    <symbol id="i-cpu" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h2v3h2V2h2v3h2a2 2 0 012 2v2h3v2h-3v2h3v2h-3v2a2 2 0 01-2 2h-2v3h-2v-3h-2v3H9v-3H7a2 2 0 01-2-2v-2H2v-2h3v-2H2V9h3V7a2 2 0 012-2h2V2zm-2 7v6h10V9H7z"/></symbol>
-    <symbol id="i-users" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10a4 4 0 118 0 4 4 0 01-8 0zm-5 9a6 6 0 1112 0H2zM17 11a3 3 0 110-6 3 3 0 010 6zm3 8a5 5 0 00-6-4.9 7 7 0 014-1.1 5 5 0 012 6z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2zm0 2l8 5 8-5"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011.1-.2c1 .4 2 .6 3.1.6a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.4a1 1 0 011 1c0 1.1.2 2.1.6 3.1a1 1 0 01-.2 1.1l-2.2 2.2z"/></symbol>
-    <symbol id="i-building" viewBox="0 0 24 24" fill="currentColor"><path d="M4 22V3a1 1 0 011-1h10a1 1 0 011 1v19h-3v-3H7v3H4zm3-11h2V9H7v2zm0 4h2v-2H7v2zm4-4h2V9h-2v2zm0 4h2v-2h-2v2zM19 22V8h2v14h-2z"/></symbol>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo" aria-label="Stratex home">
+    <svg viewBox="0 0 378 100" width="160" height="42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g font-family="Futura,'Century Gothic',sans-serif" font-size="46" font-weight="500" fill="#FFFFFF" text-anchor="middle">
+        <text x="39" y="72">S</text><text x="85" y="72">T</text><text x="131" y="72">R</text>
+        <text x="231" y="72">T</text><text x="277" y="72">E</text><text x="323" y="72">X</text>
+      </g>
+      <polyline points="158,72 181,26 204,72" fill="none" stroke="#D4895A" stroke-width="5.5" stroke-linejoin="miter"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Stratex</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <svg class="hero-bg-peak" viewBox="0 0 800 700" width="900" height="700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polyline points="100,680 400,60 700,680" fill="none" stroke="#B85C38" stroke-width="3"/>
   </svg>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div class="brand"><img src="logo.png" class="logo-img" alt="Stratex logo"/> <span>Stratex</span></div>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <p class="hero-kicker">Mumbai · Global Delivery</p>
+
+  <div class="hero-wordmark">
+    <svg viewBox="0 0 378 100" width="340" height="90" xmlns="http://www.w3.org/2000/svg" aria-label="Stratex">
+      <g font-family="Futura,'Century Gothic',sans-serif" font-size="46" font-weight="500" fill="#FFFFFF" text-anchor="middle">
+        <text x="39" y="72">S</text><text x="85" y="72">T</text><text x="131" y="72">R</text>
+        <text x="231" y="72">T</text><text x="277" y="72">E</text><text x="323" y="72">X</text>
+      </g>
+      <polyline points="158,72 181,26 204,72" fill="none" stroke="#D4895A" stroke-width="5.5" stroke-linejoin="miter"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-headline">
+    Business-first.<br><em>AI-led.</em> Salesforce execution.
+  </h1>
+  <p class="hero-sub">
+    We help organisations worldwide derive measurable value from Salesforce — combining top-tier consulting pedigree with hands-on delivery across every sector.
+  </p>
+  <div class="hero-actions">
+    <a href="#services" class="btn-primary">Explore Services</a>
+    <a href="#contact" class="btn-ghost">Talk to Us</a>
+  </div>
+  <div class="hero-badges">
+    <span class="hero-badge"><span class="dot"></span>Salesforce Experts</span>
+    <span class="hero-badge"><span class="dot"></span>AI-led Delivery</span>
+    <span class="hero-badge"><span class="dot"></span>Global Reach</span>
+  </div>
+</section>
+
+<!-- PEDIGREE BAR -->
+<div id="pedigree">
+  <div class="pedigree-inner">
+    <span class="pedigree-label">Team pedigree</span>
+    <div class="pedigree-divider"></div>
+    <div class="pedigree-logos">
+      <img class="pedigree-logo pedigree-logo-bcg" src="data:image/png;base64,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" alt="Boston Consulting Group">
+      <img class="pedigree-logo pedigree-logo-deloitte" src="data:image/png;base64,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" alt="Deloitte Digital">
+      <img class="pedigree-logo pedigree-logo-tata" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAA8CAYAAAA5S9daAAAQBklEQVR42u1be4xdxXn/fd/MnLtPG2Ns3mBSg5XLQyVGoERJrpOm1G2d2rCcxbxT1Ow/VdQHrfpHm1zdNlXVqE0VVULIpVItIYN9sstDbuUUqd2rSqSmhfBcbCgYsInxYlgM9u6eO4+vf+yczfHNLnt3bZKmYqSruz53zsw3v/nmm9/85jPwSQH9rPpJ05THx8dn+1u9erVUq1Up/j02Nkbtv2dZFgDILyy4aZqqWq2mTwPQVKvVdJqm6uOatNPaaL1e59HRUW42m678PE3TVUR0GYDLAFwC4DwRORNALwANwAGYJKL3ROQwgNe01i+LyCsPPfTQkXJbtVpNb9iwITQajfB/DQRK05SzLPOFoeecc85nRWSjiNQAXK6UOkMpNfuCyE97OdFPzPHeI4RwTEReIqImEe0JITyRZVkrAqtO13I5ZRCiMT7+fRER3QngFmauKqUQQigGJETkF+hbSiApZialFJi5aGM/ET0UQtieZdmB9v5/HiBQvV6nRqMRbrjhhnOTJPljAHdrrZd77+GcKwZNAHiJfQmAMIOJKK01KaXgnPtQRLbnef6dRx999GC9XudGoyFL9Qq11LXfbDal2WxKmqZDWutdWuuveO+7vPcuhAAi4jh4PgWwCwCZiCjMFA+g2xhzLTPfWa1WJ++99969Zbs+dk+IqIeNGzcuW758+f1a69Q5B++9I6KPiuBlVxeaCQDlulJ6vpB9IiKembUxBtbaR0Xk7izL3lvK8uClAJCm6fnLly9vaq3TVqvlvPeBiJTMRDsfo70D4EUkxKBHRERxnTMRUaw/C4pSipm5qErxtzBHm0JEKoQgeZ47Y8xmZv6PzZs3r8myzNfrdf64PIEByJYtW85MkqSplLrcOTcFICnclZnBzLNRXkQQQkAIASKSA5gCMA2gBeBMpVSfc06UUuS9P0FE78b2KgC6iahrgTaLmNHSWnd7718RkS9mWXYkjq2jbVQvIgii0WiI1vqhSqVyubUWSZJ0A4BzDiGED7z3b3nvXwdwgJlfDyEcIqK3vffvMvP71toTxpgcgGfms0IID1cqlc+0Wq0XlFJf7erqentyclJbayvGmF4RWS4iK1ut1jlEdAERrRGRSwBcDOB8Zj5DKaWIqNt7j0qlcunU1NT3AXw+gkCdBEtazDaYpum3u7u7/3RycvIgM78iIs8R0XMisk8p9cayZcve2bZtm+3Qq0Kapt/q7+9vHDt27DvDw8N/Ujxf6OVaraYvuOCCVdbai0VkHRFdJSJXAbi0q6vr4unp6e9mWXZPp/Gh4+WwcePGSn9//9ZKpbIvz/N9WZYd6+S9oaEhMzExoQG0CoPWr19vNm3a5F988cU/6O/v/5vjx4/Xq9Xqt3fv3q2eeuopWwAfl4YvCNJC5bbbblsGYF2r1bocwM4sy6Y+drKUpuk5RHQeEV0YQriAiM4DcLaInAVgBYBlkRonzDwdQhgF8Efj4+PTzWbT3XTTTfcUIGRZ9ue1Wk2vXr3aAPhrZv7VEEI3AAvgOIAPAUwQ0VEROcLMPxaRQ8x8KM/zt0ZGRt4moiXxBL2IAZ/PzFeHEK6O7ncZgAsBrFBKQWt9EiUuaHH5756ennWTk5M/bDab2wGAmVWZr0Rgbujt7f3G9PT0SQGRiGY/5X6cc9Bavz84OHgoTdP9RPQ8M/9IRH60c+fOg6cMQty5ZOvWrec5555XSq3QWrdHaFhrfVsAKrY3Kp0LnHNOATiz1D7PQdrOdM75EIIXEV16X9r5RuxHEdEZzHwGM19BRAPRpuNpml6VZdmBYmtfEgiDg4MMwFtr1xhjVlhrXXkAJcIzJ/M8mfdAiYgSkUNzMFYuvXMohKDi3x3t9yIikaZLQbqMMX2tVutTAA6MjY3R6VgOfZHbcGFY2wA74hnRdf+nHYRi0HGJvOacC4uk9FRmmkTkiUiYufe0MUZmniy79lIOQpH7TzDz68XDEAIDgFKqsIOMMW+KyDvMjKUeiESE4lKePGUQCvnLe3/QOWd5xjJZglEStYQDO3bsmBgaGjLlwFh4Qpqm5oEHHjhBRK9GEJYknBARe++9c+6N8jiWBEIMJnTllVceJKKXmVlkLjVkYaNCHNQYAOR53r4MVNw9CnteWKoniEhQSkkI4dV33333AABaSIVacDnUajUVG3lkhqHSkmUtEXm2fcbmCYDPLFnkIArRzpFms+lqtZo65ZiwYcOGEJfEP1hrp6LBssjBcwgBSqlnAODIkSPStjuo8nMies57X95CFxN72Fo75b2/r2z/KYEQj85qZGTkDe/93yZJwiLiFmMYM7O1dlpEXgKA/v5+afMABoCLLrooxEC53zn3wWJjkIi4JEnYe/+dkZGRN9I0VZ0Ish0hnWVZSNNUnThx4tt5nj+VJInpFAgRkcj8XqtWq4cBYHx8PJQ9oJjx/fv3CwB68MEHjxLRKzGYhk4BqFQqJs/zH65cufIvS0LsaRNVpFqtyp49e3Lv/YD3/pAxRncCRBEUReTZwqvmIEuqHIOKuNBpcBQRmySJtta+5pwb2LZtm82yrGPNseM1V14WeZ5fLyKvJ0miRcQu1FnkMU9GLyjzDY6bzVzB68lOyWKlUjHOuX0i8pWHH374cFSWOg7giwo8UVNQjzzyyEve+88750a7urpMpM5+vqDovQcR/XdxvdbuCeXdofT7U865+QASAI6IqKurS1tr/3lycvILWZYd6DQOLBmEMhBZlr21a9euX8nz/FvMPJUkSWGsK3mGMDM75943xrxYxJcSYzxpOZTuH1GpVPZ5748wc1kdktg+JUmiiehYnud/uGvXrk27d+8+Wq/XeSl3EIsGoQAiupxkWfYXIYRrnHMPMrNPkkRHwz2AllIqENHzO3bsmCjemXWDn9Dlsh1Sr9c5MsdnmTkAaIlIYGaK7efW2n+01n4my7K/K6S0pV7NLQmEEpuU6BVjO3fuvDWCca+IHDbGKK11xRjDIrIXAEZHR3kOjh/axZ1Svf80xrAxphK35oPW2u8CuHrXrl2/MzIy8loMtEu+eFmUqLKQV4yNjVGWZc8A+N1bb731z5xzXxaRjURUI6LROeIBRKTXGMMA+srPS/Wa1tr9IYRRIvqX6enpf3/sscc+LOS3arUqjUbDn+oYThmEklegAGPHjh0TAIYBDEfJTArAyoMkolettS+IyMvlg05Rr1qtjo6NjV1eXuenc/Afd6E0TVUbJ1hy+bjzE34mgPyc3/+kfFI+KUtYbzHJatElsryTMlDmEjI2bNgAAO25RtSJ6NFJW5GI8ejo6E/VbzabHr/AWXA/O0+I+/vvKaVWeD9z/d/JEdkYw9baV7Ms215ccGzatOms7u7ub5RZYVE3z/PHhoeHn6rVaqrZbLqbb775QiL6eqd9lvvN83zP8PDwE/V6XTcaDb9169Zrmfk3rbUhXg1Iqe/vRe4y5y21LmjqqlWrvpkkyQrnXEd3CiKCSqUCa+2TALbv3bvXAMi7urpu6evr+1ae5yflFFQqFbRaresA/Nq6deuo2WzCObemt7f3m953zntEBF1dXbDWTgN4Yu/evQqAc879VV9f35dKR/fZfo8fP/42gPsK8D+KMb6T53mf9z4UZwqaA42S2uxFRAF4L0pmLiJ9x/T0tHPO+ZJyJNZaENEX0zS9ZNu2bQfiAcrmeW5DCLOeQPPMQNEvETkAWkQmAWDPnj35jTfe+Clm/tyJEyesiJTb8PHW62sA7ms2m2GhA1S3UsowcyV+mwjSSR9mNvH3LqWUEZGuguoODAz8slLqmnjnWCneISITj79dAG4tOvTec2wrUUoZpdScfZb7JaLu+K1Lp9FbjDGViGG5jYpzTimlrh0YGLgaMzkRal4QiGjce380hDDuvT8qIlPzzMhUrHckhHAUwLulNu7QWs8psBTiCoA7issXpZSNbb3jvT/qvT/6EeLMsWjX2yGEo4UnDA0NGRG57SPUaa+1JiL62hzK1k9AaDabLs/zL4UQ1hLRp4lorYhsT5KkEEkAwCVJghDC/US0loiq1tq1ReObNm3qIaJB59ycxhARO+eC1nrdxMTEFwDQBx988FwIYS2AS2ObawG8opQqErYgIkFrDSK6g4jWGmOqrVZr7fT09D8BoPfff/+zWutPO+fCPBe4HONcmqZpX4wJNGdMKI6oRRkYGJieJzZNtWWpEADq6em5Xmt9vrXWx1Q+iEiIlzW6JLoygLsB/Nt1111nG41GXm48TdP5POGDtn45hoo7lVIoxzIArnR5zCEEb4w511r7GwCy9gDJ7YNZv369iWuL59miuFwvTVMGICGEuwpxo5i9KJZuS5KkkMWUtRYAvpqm6apGoxEiyaG2z0+VEIKO5EoXCtXmzZvPALClpEW62Nc2ItobcylCKbbeDUDaL2S4TbyUvr6+TlQa6evrk3q9TlFzPJ+IrnfOFUkTQSkFItrNzN8LIVBcIhQvSJYBuKmkIslC6hAzCwBZvXq1FO8YY34rSZKVMcuVRIRFhLz3fw/gsWhDKMBn5i/dfPPNv1QC/9TktTYZbDBJkp54D0FFpyGEH+zcufNla+2rWmsupLSY4fLbMR6FxR6Xi5kkortKaUFBa82tVuv1kZGRfSGEH1hrpaRWe2NMEkK4rV3qOyUQIicnEbkjhBm74q0whRDGVq5c+WxcWsPlWYkJnNekabo+blsd27FixQpuNBphy5YtlxHRF4qBlrxvBACOHj36vPf+eaUUiUgodicRuX1oaMhE208NhO7ubgVABgcHr1FKXV1klxTGABiJOY0SQsiccyfNStxK75pv25qvvPnmmwwAWutbjDGmtKUWW/D3ix2vDH6xOxljLp2YmNhQSHWnBMLZZ59dJGfdGYPg7P1iHPBwcS654oornvbev1jMSqwDERmcb9uar/T397vIM24tuEH0Pvbe7x8fH/+vYr2HEIbLzLWUJ3F3Of7wR3D0IrH6pE8RbdesWdNK07Q7RufiqNrSWgfv/fPVavU5AHT48GHVaDRCnJVARHbGvtAyxqwWkV+PR/lZL5nrU2SvZVnmJyYmPqe1Xuucs0QkRGSZOYjII81m08X1TsPDwy9675/WWgfM5FMXmXYb0zRdFSUA5o+Ixj2lu4PZb2buKSnMgz09PRcwszLGGK11UqlUFBE93Gg0Qq1WU+eee27hrsMhBDbGFO0lxhgionvq9TqXtq3lxhhlZsrst/felCbo9yuVCpfqVGbyy3m40DgKUIlouFKpFP1pZla9vb1nAPh6BJ/1XCJJ7OjZVqv1eMmdChL0XMmYC621j1trC7YmIQQC8GARxQvhI8uyFwYGBu43xqyJxIbiGrZjY2Mrsyx7Jy6Jf221WhfH/z5Q7CgM4B0AuP3223vzPLdTU1OPF4eqeNX3Y2Z+unwX0mw2AWDX5OTkl4sDmoiEPM85Zt1ivkPV/3f1elENUr1epzkuWsqkppM6aJPA5r28WaDObJudtLPIcXxS/heQQ8nCqMREqwAAAABJRU5ErkJggg==" alt="Tata Group">
+      <img class="pedigree-logo pedigree-logo-salesforce" src="data:image/png;base64,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" alt="Salesforce">
     </div>
-  </header>
+  </div>
+</div>
 
-  <main>
-    <!-- Hero -->
-    <section id="home" class="hero">
-      <div class="container">
-        <div class="eyebrow">Salesforce & SaaS Consulting</div>
-        <h1 class="title">Business‑first, AI‑led Salesforce execution.<br/>Strategy × Execution = <span style="background:linear-gradient(135deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;">Stratex</span>.</h1>
-        <p class="subtitle">We help organizations derive measurable value from technology. From Salesforce implementations to AI‑powered CRM, we combine strategy with hands‑on execution across Insurance, Education, SaaS, E‑commerce, Government and more.</p>
-        <div class="hero-card">
-          <span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Salesforce Experts</span>
-          <span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>AI‑led Delivery</span>
-          <span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-map"/></svg>End-to-end Solutions</span>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">About Stratex</div>
+    <h2 class="section-title">Strategy + Execution.<br>That's the name. That's the promise.</h2>
+
+    <div class="about-grid">
+      <div>
+        <p class="section-lead" style="margin-bottom:28px;">
+          Stratex is a technology consulting firm specialising in Enterprise SaaS. Our team brings experience from BCG, Deloitte Digital, Tata Group, and Salesforce — delivering the rigour of top-tier consulting with the agility of a focused partner.
+        </p>
+        <p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:28px;">
+          Headquartered in Mumbai, we serve clients globally — from ISVs and systems integrators seeking a trusted India delivery partner, to enterprises running Salesforce transformations across markets.
+        </p>
+        <div class="about-sectors">
+          <span class="sector-tag">Insurance & FS</span>
+          <span class="sector-tag">Education & EdTech</span>
+          <span class="sector-tag">SaaS & B2B</span>
+          <span class="sector-tag">E-commerce</span>
+          <span class="sector-tag">Government</span>
+          <span class="sector-tag">Real Estate</span>
         </div>
       </div>
-    </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="container about-grid">
-        <div class="card">
-          <h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>About Us</h2>
-          <p class="section-sub">Stratex is a Technology Consulting company specializing in Enterprise SaaS, with deep expertise in implementing Salesforce solutions across sectors.</p>
-          <p>Our name blends <strong>Strategy + Execution</strong> because outcomes demand both. Our team has led and deployed large‑scale technology programs across <em>Insurance, Education, SaaS, E‑commerce, Government</em> and more. We take a <strong>business‑first</strong> approach—then use AI‑led delivery and Salesforce best practices to realize value fast.</p>
-          <ul class="list">
-            <li>Insurance & Financial Services</li>
-            <li>Education & EdTech</li>
-            <li>SaaS & B2B</li>
-            <li>E‑commerce & Retail</li>
-            <li>Government & Public Sector</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>How we work</h3>
-          <ul class="list">
-            <li><strong>Business‑first discovery</strong> → clarify outcomes, KPIs, adoption targets.</li>
-            <li><strong>Rapid, fixed‑scope launches</strong> → Quick‑Start blueprints on Sales/Service Cloud.</li>
-            <li><strong>AI‑assisted delivery</strong> → better data quality, automation, and forecasting.</li>
-            <li><strong>Operate & scale</strong> → managed services and admin-as-a-service.</li>
-          </ul>
-          <p style="margin-top:12px;color:var(--muted)">Based in <strong>Mumbai</strong>, serving clients pan‑India.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-rocket"/></svg>Services</h2>
-        <p class="section-sub">Implement, enhance, and scale on Salesforce—without the fluff.</p>
-        <div class="services">
-          <div class="card">
-            <h3><svg class="icon icon-lg" aria-hidden="true"><use href="#i-rocket"/></svg>Salesforce Quick‑Starts</h3>
-            <p>Fixed‑scope deployments for Sales Cloud and Service Cloud—set up the right way with data, security, and adoption in mind.</p>
-            <ul class="list">
-              <li>Sales Cloud: Leads → Pipeline → Forecasts</li>
-              <li>Service Cloud: Case Management & SLAs</li>
-              <li>Reports & Dashboards that matter</li>
-            </ul>
+      <div>
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:20px;">How We Work</p>
+        <div class="how-steps">
+          <div class="how-step">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h4>Business-first discovery</h4>
+              <p>Clarify outcomes, KPIs, and adoption targets before a line of config is written.</p>
+            </div>
           </div>
-          <div class="card">
-            <h3><svg class="icon icon-lg" aria-hidden="true"><use href="#i-wrench"/></svg>Managed Services</h3>
-            <p>On‑going admin and enhancement support so your teams keep shipping. Monthly retainers aligned to outcomes.</p>
-            <ul class="list">
-              <li>Backlog & Release management</li>
-              <li>Automation & Data quality</li>
-              <li>User training & enablement</li>
-            </ul>
+          <div class="how-step">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h4>Rapid, fixed-scope launches</h4>
+              <p>Quick-Start blueprints on Sales Cloud and Service Cloud — set up right from day one.</p>
+            </div>
           </div>
-          <div class="card">
-            <h3><svg class="icon icon-lg" aria-hidden="true"><use href="#i-cpu"/></svg>AI‑led CRM Enhancements</h3>
-            <p>Practical AI inside your CRM: routing, scoring, assistive workflows, and insights integrated with your stack.</p>
-            <ul class="list">
-              <li>Lead & Case scoring</li>
-              <li>Next‑best‑action & copilots</li>
-              <li>Forecast & churn signals</li>
-            </ul>
+          <div class="how-step">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h4>AI-assisted delivery</h4>
+              <p>Better data quality, intelligent automation, and forecast-ready pipelines.</p>
+            </div>
           </div>
-          <div class="card">
-            <h3><svg class="icon icon-lg" aria-hidden="true"><use href="#i-users"/></svg>Salesforce Talent</h3>
-            <p>Deploy Salesforce‑trained admins and developers to accelerate your internal roadmap.</p>
-            <ul class="list">
-              <li>Certified Admins / Devs</li>
-              <li>Flexible engagement models</li>
-              <li>Onsite/Remote staffing</li>
-            </ul>
+          <div class="how-step">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h4>Operate & scale</h4>
+              <p>Managed services and admin-as-a-service so your team keeps shipping.</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container contact-grid">
-        <div class="card">
-          <h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Contact</h2>
-          <p class="section-sub">Have a use‑case in mind? Send us a note.</p>
-          <form id="contactForm">
-            <input name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Work Email" required />
-            <input name="company" placeholder="Company" />
-            <select name="interest">
-              <option value="Quick-Start">Quick‑Start</option>
-              <option value="Managed Services">Managed Services</option>
-              <option value="AI Enhancements">AI Enhancements</option>
-              <option value="Salesforce Talent">Salesforce Talent</option>
-              <option value="General">General</option>
-            </select>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button class="btn" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Send</button>
-          </form>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Office</h3>
-          <p class="address">
-            <strong>Stratex Technologies LLP</strong><br/>
-            2101, Beverly Hills, T‑36,<br/>
-            Shastri Nagar, Andheri (W),<br/>
-            Mumbai — 400053
-          </p>
-          <div class="contact-block">
-            <div><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><strong>Email:</strong> <a href="mailto:contact@stratex.co.in">contact@stratex.co.in</a></div>
-            <div><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><strong>Phone:</strong> <a href="tel:+919819947722">+91‑9819947722</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container foot">
-      <div>© <span id="year"></span> Stratex Technologies LLP</div>
-      <div>2101, Beverly Hills, T‑36, Shastri Nagar, Andheri (W), Mumbai — 400053</div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const DEST_EMAIL = 'contact@stratex.co.in';
-    function formToMailto(form, subjectPrefix){
-      const data = new FormData(form);
-      const pairs = [];
-      for (const [k, v] of data.entries()) if (String(v).trim()) pairs.push(`${k}: ${v}`);
-      const subject = encodeURIComponent(`${subjectPrefix} — ${data.get('name') || ''}`.trim());
-      const body = encodeURIComponent(pairs.join('\n'));
-      window.location.href = `mailto:${DEST_EMAIL}?subject=${subject}&body=${body}`;
-    }
-    document.getElementById('contactForm').addEventListener('submit', (e)=>{ e.preventDefault(); formToMailto(e.target, 'Stratex Contact'); });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<!-- PEAK DIVIDER -->
+<div class="peak-divider" aria-hidden="true">
+  <svg viewBox="0 0 80 28" width="60" height="21" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="4,24 40,4 76,24" fill="none" stroke="#B85C38" stroke-width="3" stroke-linejoin="miter"/>
+  </svg>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-kicker">Services</div>
+        <h2 class="section-title" style="margin-bottom:0;">Implement, enhance,<br>and scale on Salesforce.</h2>
+      </div>
+      <a href="#contact" class="btn-primary">Start a conversation →</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#F4F1EC"/>
+            <polyline points="10,26 18,10 26,26" fill="none" stroke="#B85C38" stroke-width="2.5" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <h3>Salesforce Quick-Starts</h3>
+        <p>Fixed-scope deployments for Sales Cloud and Service Cloud — the right foundations for data, security, and adoption.</p>
+        <ul class="service-list">
+          <li>Sales Cloud: Leads → Pipeline → Forecasts</li>
+          <li>Service Cloud: Case Management & SLAs</li>
+          <li>Reports & Dashboards that matter</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#F4F1EC"/>
+            <circle cx="18" cy="18" r="7" stroke="#B85C38" stroke-width="2.5"/>
+            <line x1="18" y1="8" x2="18" y2="11" stroke="#B85C38" stroke-width="2.5"/>
+            <line x1="18" y1="25" x2="18" y2="28" stroke="#B85C38" stroke-width="2.5"/>
+            <line x1="8" y1="18" x2="11" y2="18" stroke="#B85C38" stroke-width="2.5"/>
+            <line x1="25" y1="18" x2="28" y2="18" stroke="#B85C38" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <h3>Managed Services</h3>
+        <p>Ongoing admin and enhancement support so your teams keep shipping. Monthly retainers aligned to outcomes.</p>
+        <ul class="service-list">
+          <li>Backlog & Release management</li>
+          <li>Automation & Data quality</li>
+          <li>User training & enablement</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#F4F1EC"/>
+            <path d="M10 26 L18 10 L26 26" fill="none" stroke="#1E3358" stroke-width="2" stroke-linejoin="miter" opacity="0.3"/>
+            <polyline points="12,22 18,10 24,22" fill="none" stroke="#B85C38" stroke-width="2.5" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <h3>AI-led CRM Enhancements</h3>
+        <p>Practical AI inside your CRM: routing, scoring, assistive workflows, and insights integrated with your stack.</p>
+        <ul class="service-list">
+          <li>Lead & Case scoring</li>
+          <li>Next-best-action & copilots</li>
+          <li>Forecast & churn signals</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#F4F1EC"/>
+            <circle cx="18" cy="14" r="5" stroke="#B85C38" stroke-width="2.5"/>
+            <path d="M9 28 C9 22 27 22 27 28" stroke="#B85C38" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Salesforce Talent</h3>
+        <p>Deploy Salesforce-trained admins and developers to accelerate your internal roadmap.</p>
+        <ul class="service-list">
+          <li>Certified Admins & Developers</li>
+          <li>Flexible engagement models</li>
+          <li>Onsite / Remote staffing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY STRATEX -->
+<section id="why" class="section" style="background:var(--navy);padding:96px 24px;">
+  <div class="section-inner">
+    <div class="section-kicker section-kicker--light">Why Stratex</div>
+    <h2 class="section-title" style="color:var(--white);max-width:540px;">The case for a trusted India delivery partner.</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="13" stroke="#D4895A" stroke-width="1.5"/>
+            <ellipse cx="16" cy="16" rx="5" ry="13" stroke="#D4895A" stroke-width="1.5"/>
+            <line x1="3" y1="16" x2="29" y2="16" stroke="#D4895A" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Global reach, India depth</h3>
+        <p>We work across time zones — UK, US, APAC, and the Middle East — with the cost-quality advantage of an India-based team that punches above its weight.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="4,24 16,8 28,24" fill="none" stroke="#D4895A" stroke-width="1.5" stroke-linejoin="miter"/>
+            <circle cx="16" cy="8" r="2.5" fill="#D4895A"/>
+          </svg>
+        </div>
+        <h3>Top-tier pedigree</h3>
+        <p>Our founders and leads have worked at BCG, Deloitte Digital, Tata Group, and Salesforce — bringing enterprise consulting and product management rigour to every engagement.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="24" height="16" rx="3" stroke="#D4895A" stroke-width="1.5"/>
+            <path d="M10 16 L14 20 L22 12" stroke="#D4895A" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Outcome accountability</h3>
+        <p>We don't bill hours and disappear. Every engagement is tied to defined outcomes — KPIs, adoption targets, and measurable CRM impact.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="16" height="20" rx="2" stroke="#D4895A" stroke-width="1.5"/>
+            <line x1="7" y1="11" x2="15" y2="11" stroke="#D4895A" stroke-width="1.5"/>
+            <line x1="7" y1="15" x2="15" y2="15" stroke="#D4895A" stroke-width="1.5"/>
+            <line x1="7" y1="19" x2="12" y2="19" stroke="#D4895A" stroke-width="1.5"/>
+            <path d="M20 18 L28 18 M24 14 L28 18 L24 22" stroke="#D4895A" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Product management roots</h3>
+        <p>Our team comes from product management backgrounds — we think in user stories, business cases, and roadmaps before we think in configuration. We're here to solve your business problem, not just implement technology.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="16" r="5" stroke="#D4895A" stroke-width="1.5"/>
+            <circle cx="22" cy="16" r="5" stroke="#D4895A" stroke-width="1.5"/>
+            <line x1="15" y1="16" x2="17" y2="16" stroke="#D4895A" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Ideal co-delivery partner</h3>
+        <p>ISVs and global SIs trust us to extend their delivery capacity — handling India implementations while they focus on their home markets.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="6,22 12,14 18,18 26,8" fill="none" stroke="#D4895A" stroke-width="1.5"/>
+            <circle cx="26" cy="8" r="2" fill="#D4895A"/>
+          </svg>
+        </div>
+        <h3>English-first delivery</h3>
+        <p>All project communication, documentation, and stakeholder management is in English — no friction for international teams and clients.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4 L20 12 L28 13 L22 19 L24 28 L16 24 L8 28 L10 19 L4 13 L12 12 Z" stroke="#D4895A" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>AI-native from day one</h3>
+        <p>We embed AI into every delivery stream — from data quality and lead scoring to copilots and forecast intelligence — not as an add-on, but by default.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODELS -->
+<section id="engagement" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">Engagement Models</div>
+    <h2 class="section-title">Work with us your way.</h2>
+    <p class="section-lead" style="margin-bottom:0;">Whether you need a scoped project, ongoing support, or dedicated talent — we adapt to how you work.</p>
+
+    <div class="engagement-grid">
+      <div class="engagement-card">
+        <span class="engagement-tag">Fixed scope</span>
+        <h3>Quick-Start Project</h3>
+        <p>A defined deliverable, fixed timeline, and clear price. Best for new Salesforce deployments or a bounded enhancement.</p>
+      </div>
+      <div class="engagement-card">
+        <span class="engagement-tag">Ongoing</span>
+        <h3>Monthly Retainer</h3>
+        <p>Dedicated capacity each month for admin, development, and roadmap delivery. Scales up or down as you need.</p>
+      </div>
+      <div class="engagement-card">
+        <span class="engagement-tag">Co-delivery</span>
+        <h3>SI / ISV Partnership</h3>
+        <p>We extend your delivery capability for India implementations — white-label or co-branded, fully aligned to your standards.</p>
+      </div>
+      <div class="engagement-card">
+        <span class="engagement-tag">Staff aug</span>
+        <h3>Embedded Talent</h3>
+        <p>Certified Salesforce admins and developers placed inside your team — onsite, hybrid, or remote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-kicker section-kicker--light">Contact</div>
+    <h2 class="section-title">Have a use-case in mind?</h2>
+    <p class="section-lead">Tell us what you're working on and we'll get back to you within one business day.</p>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-label">Office</div>
+        <div class="contact-info-value">
+          Stratex Technologies LLP<br>
+          2101, Beverly Hills, T-36,<br>
+          Shastri Nagar, Andheri (W),<br>
+          Mumbai — 400053, India
+        </div>
+
+        <div class="contact-info-label">Email</div>
+        <div class="contact-info-value">
+          <a href="mailto:support@stratex.co.in">support@stratex.co.in</a>
+        </div>
+
+        <div class="contact-info-label">Phone</div>
+        <div class="contact-info-value">
+          <a href="tel:+919819947722">+91 98199 47722</a>
+        </div>
+
+        <div style="margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08);">
+          <svg viewBox="0 0 378 100" width="180" height="48" xmlns="http://www.w3.org/2000/svg" aria-label="Stratex" style="opacity:0.35">
+            <g font-family="Futura,'Century Gothic',sans-serif" font-size="46" font-weight="500" fill="#FFFFFF" text-anchor="middle">
+              <text x="39" y="72">S</text><text x="85" y="72">T</text><text x="131" y="72">R</text>
+              <text x="231" y="72">T</text><text x="277" y="72">E</text><text x="323" y="72">X</text>
+            </g>
+            <polyline points="158,72 181,26 204,72" fill="none" stroke="#D4895A" stroke-width="5.5" stroke-linejoin="miter"/>
+          </svg>
+          <p style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:12px;letter-spacing:0.1em;text-transform:uppercase;">Strategy × Execution</p>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="Where are you based?">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option value="">Select a service or model</option>
+            <option>Quick-Start Project</option>
+            <option>Monthly Retainer</option>
+            <option>SI / ISV Partnership</option>
+            <option>Embedded Talent</option>
+            <option>AI Enhancements</option>
+            <option>General enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project or requirement…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">Send Message →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy);">
+  <span class="footer-copy">© 2025 Stratex Technologies LLP · Mumbai, India</span>
+  <div class="footer-right">
+    <a href="https://www.linkedin.com/company/stratex-technologies" target="_blank" rel="noopener" class="footer-social">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 6.5H1.5V18.5H4.5V6.5ZM3 5C4.1 5 5 4.1 5 3C5 1.9 4.1 1 3 1C1.9 1 1 1.9 1 3C1 4.1 1.9 5 3 5ZM18.5 18.5H15.5V12.7C15.5 11.5 15.5 10 13.9 10C12.3 10 12 11.3 12 12.6V18.5H9V6.5H11.9V7.9H11.9C12.3 7.1 13.4 6.2 14.9 6.2C17.9 6.2 18.5 8.2 18.5 10.7V18.5Z"/>
+      </svg>
+      LinkedIn
+    </a>
+    <span class="footer-tagline">Strategy × Execution</span>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Sent ✓';
+  btn.style.background = '#1F9D5C';
+  btn.disabled = true;
+}
+</script>
 </body>
 </html>
